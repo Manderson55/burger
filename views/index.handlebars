@@ -1,0 +1,59 @@
+<!-- <h1>Eat DA Burger</h1>
+<ul>
+	{{#each burgers}}
+		<li>
+			<p>{{this.dt}}</p>
+	    	<p>{{this.burger_name}}</p>
+		</li>
+	{{/each}}
+</ul> -->
+
+<h1>Eat-Da-Burger!</h1>
+
+<main>
+  <div id="top" class="container-fluid">
+
+    <div class="row">
+      <div class="col-md6">
+        {{#each burgers}}
+          {{#unless this.devoured}}
+              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                  <button class='burgerAvailable'>{{this.id}}. {{this.burger_name}}</button>
+                  <button type="submit" class="devourIt">Devour it!</button>
+               </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+       </div>
+      </div>
+
+      <div class="col-md6">
+        {{#each burgers}}
+          {{#if this.devoured}}
+           console.log(devoured)
+            <div class='burgerEaten'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+      </div>
+      </div>
+    </div>
+
+</main>
+
+<h2>Make Your Own Burger!</h2>
+
+<div class="row">
+  <div id="bottom" class="container-fluid">
+ 
+     <div class="col-md12">
+         <form action="/burgers" method="POST">
+         <input type="text" id="burger_name" name="burger_name" placeholder="Make DA Burger">
+         <button type="submit" class="addBurgerButton">Add The Burger</button>
+    </form>
+
+</div>
